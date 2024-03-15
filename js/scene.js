@@ -13,17 +13,18 @@ document.addEventListener('DOMContentLoaded', function () {
         blogPostsContainer.innerHTML = '';
         console.log(data.data);
         data.data.forEach(post => {
-
+    
             const firstParagraphText = post.attributes.body[0].children[0].text;
             const postHtml = `
                 <div class="p-4 md:w-1/3">
-                    <div class="h-full rounded-xl bg-white overflow-hidden">
+                    <div class="h-full rounded-xl bg-white overflow-hidden flex flex-col">
                         <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="http://localhost:1337${post.attributes.cover.data.attributes.formats.medium.url}" alt="${post.attributes.title}">
-                        <div class="p-6">
+                        <div class="p-6 flex flex-col" style="height: 300px;"> <!-- Set a fixed height for the post content -->
                             <h1 class="title-font text-lg font-medium text-gray-600 mb-3">${post.attributes.title}</h1>
-                            <p class="leading-relaxed mb-3">${firstParagraphText}</p>
+                            <p class="leading-relaxed mb-3 " style="overflow: hidden;">${firstParagraphText}</p>
 
-                            <div class="flex items-center flex-wrap">
+                            <div class="flex-grow"></div> <!-- This will push the button to the bottom -->
+                            <div class="flex items-center">
                                 <button class="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md shadow-cla-blue px-4 py-1 rounded-lg" onclick="redirectToBlog(${post.id})">Learn more</button>
                             </div>
                         </div>
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             blogPostsContainer.innerHTML += postHtml;
         });
-    })
+    })     
     .catch(error => console.error('Error fetching blog posts:', error));
 });
 
