@@ -41,3 +41,4 @@ document.addEventListener('DOMContentLoaded', function () {
 function redirectToBlog(postId) {
     window.location.href = `blog.html?id=${postId}`;
 }
+
