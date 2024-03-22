@@ -1308,6 +1308,38 @@ html {
   /* Change to your desired color */
 }
 
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1s ease forwards;
+}
+
 .hover\:scale-100:hover {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
@@ -1527,6 +1559,10 @@ html {
 
   .lg\:max-w-screen-xl {
     max-width: 1280px;
+  }
+
+  .lg\:animate-none {
+    animation: none;
   }
 
   .lg\:grid-cols-4 {

@@ -17,3 +17,33 @@ html {
   top: 3rem; /* Adjust top spacing as needed */
   background-color: #0c4a6e; /* Change to your desired color */
 }
+
+@keyframes slideInLeft {
+  0% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1s ease forwards;
+}
