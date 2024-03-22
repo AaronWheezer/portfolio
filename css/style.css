@@ -9,7 +9,7 @@ html {
 .borderedText{
   position: absolute;
   content: "";
-  width: 7.5%; /* 70% of the text width */
+  width: 7rem; /* 70% of the text width */
   height: 0.25rem;
   left: 0;
   right: 0;
