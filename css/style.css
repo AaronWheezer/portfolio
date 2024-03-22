@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+  }
+
+.borderedText{
+  position: absolute;
+  content: "";
+  width: 7.5%; /* 70% of the text width */
+  height: 0.25rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 3rem; /* Adjust top spacing as needed */
+  background-color: #0c4a6e; /* Change to your desired color */
+}

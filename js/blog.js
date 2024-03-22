@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update HTML elements with blog post data
         blogPostTitle.textContent = blogPost.attributes.title;
-        blogPostDate.textContent = `Published on ${blogPost.attributes.publishedAt}`;
-        blogPostImage.src = `http://localhost:1337${blogPost.attributes.cover.data.attributes.formats.medium.url}`;
+        blogPostDate.textContent = `Published on ${blogPost.attributes.date}`;
+        blogPostImage.src = `http://localhost:1337${blogPost.attributes.cover.data.attributes.formats.large.url}`;
 
         // Render the body content paragraphs of the blog post
         blogPostContent.innerHTML = renderBody(blogPost.attributes.body);

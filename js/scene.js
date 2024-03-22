@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             <div class="flex-grow"></div> <!-- This will push the button to the bottom -->
                             <div class="flex items-center">
-                                <button class="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md shadow-cla-blue px-4 py-1 rounded-lg" onclick="redirectToBlog(${post.id})">Learn more</button>
+                                <button class="bg-sky-900 hover:scale-105 drop-shadow-md text-white shadow-cla-blue px-4 py-1 rounded-lg" onclick="redirectToBlog(${post.id})">Learn more</button>
                             </div>
                         </div>
                     </div>
