@@ -1,6 +1,11 @@
 const token = 'Bearer 7adde395b3ed6acbe028d5076594fce90d95ea12e83d4eecb8aa42e98d1eed48c5a2b4e7c0606d1ca3870a8ccdf3683daf08f650a1fb555a2afd63a1a91a43212797f3994609d5e37e556d9cf7bec6c6ee736af09366987c220aa880fe858b0d0c081ed347cc4a8e2024d6582eb4e473a25a6642197eddb5f077ccd8289aa97b';
 
 document.addEventListener('DOMContentLoaded', function () {
+    Array.from(document.getElementsByClassName("nav-link")).forEach(link => {
+        link.addEventListener('click', function (event) {
+            checkNavBarSelected();
+        });
+
     fetch(`http://localhost:1337/api/blogs?populate=*`, {
         headers: {
             Authorization: token    
@@ -36,9 +41,30 @@ document.addEventListener('DOMContentLoaded', function () {
     })     
     .catch(error => console.error('Error fetching blog posts:', error));
 });
+});
 
 // Function to redirect to blog.html with post ID in the URL
 function redirectToBlog(postId) {
     window.location.href = `blog.html?id=${postId}`;
 }
 
+
+function checkNavBarSelected() {
+    const navLinks = document.getElementsByClassName('nav-link');
+    Array.from(navLinks).forEach(link => {
+        link.addEventListener('click', function() {
+            Array.from(navLinks).forEach(navLink => {
+                navLink.classList.remove('bg-sky-900');
+            });
+
+            this.classList.add('bg-sky-900');
+            const clickedHref = this.getAttribute('href');
+            Array.from(navLinks).forEach(navLink => {
+                const href = navLink.getAttribute('href');
+                if (href === clickedHref) {
+                    navLink.classList.add('bg-sky-900');
+                }
+            });
+        });
+    });
+}
