@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //use smtp to send email 
 function sendEmail() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const tel = document.getElementById("tel").value;
-    const message = document.getElementById("Message").value;
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var tel = document.getElementById("tel").value;
+    var message = document.getElementById("Message").value;
 
     const emailData = {
         Host: "smtp-relay.brevo.com",
@@ -34,5 +34,9 @@ function sendEmail() {
     ).catch(
         error => alert("Failed to send email. Please try again later.")
     );
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("tel").value = "";
+    document.getElementById("Message").value = "";
 
 }

@@ -36,3 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
 function renderBody(body) {
     return body.map(paragraph => `<p>${paragraph.children[0].text}</p>`).join('');
 }
+
+
+function checkNavBarSelected(link) {
+    const navLinks = document.getElementsByClassName('nav-link');
+    Array.from(navLinks).forEach(navLink => {
+        navLink.classList.remove('bg-sky-900');
+    });
+    
+    const clickedHref = link.getAttribute('href');
+    Array.from(navLinks).forEach(navLink => {
+        const href = navLink.getAttribute('href');
+        if (href === clickedHref) {
+            navLink.classList.add('bg-sky-900');
+        }
+    });
+
+}
