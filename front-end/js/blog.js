@@ -1,4 +1,4 @@
-const token = 'Bearer 7adde395b3ed6acbe028d5076594fce90d95ea12e83d4eecb8aa42e98d1eed48c5a2b4e7c0606d1ca3870a8ccdf3683daf08f650a1fb555a2afd63a1a91a43212797f3994609d5e37e556d9cf7bec6c6ee736af09366987c220aa880fe858b0d0c081ed347cc4a8e2024d6582eb4e473a25a6642197eddb5f077ccd8289aa97b';
+const token = 'Bearer 89d16ea0a4f29bd86104aab38c7a398921d00472c364dbeb3c230d1931f7c2602327c5a18b6c0d9ae271eb5915a5406c5dc090b5e5944e1af16198f14996ddc00a096888603b6cb2f4a6ffc62081acfffd267fa89ba299f60607485a342f4b425fd08042913a9d42bea3b6674ed0612c5c706f7fc918cfe21beab4cfb90a9f42';
 
 document.addEventListener('DOMContentLoaded', function () {
     // Get the blog post ID from the URL query parameters
@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const postId = urlParams.get('id');
 
     // Fetch the blog post data based on the ID
-    fetch(`http://localhost:3000/api/blogs/${postId}`, {
+    fetch(`https://strapi-5ded9797b1d3.herokuapp.com/api/blogs/${postId}?populate=*`, {
+        headers: {
+            Authorization: token
+          }
     })
     .then(response => response.json())
     .then(data => {
+        
         // Populate HTML with blog post content
         const blogPostTitle = document.querySelector('h2');
         const blogPostDate = document.querySelector('.py-2');
@@ -21,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update HTML elements with blog post data
         blogPostTitle.textContent = blogPost.attributes.title;
         blogPostDate.textContent = `Published on ${blogPost.attributes.date}`;
-        blogPostImage.src = `http://localhost:1337${blogPost.attributes.cover.data.attributes.formats.large.url}`;
+        blogPostImage.src = `https://strapi-5ded9797b1d3.herokuapp.com${blogPost.attributes.cover.data.attributes.url}`;
 
         // Render the body content paragraphs of the blog post
         blogPostContent.innerHTML = renderBody(blogPost.attributes.body);
