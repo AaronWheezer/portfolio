@@ -19,7 +19,7 @@ function sendEmail() {
 
     emailjs.sendForm('service_ji2v17o', 'template_8bd3wbs', test)
                     .then(() => {
-                        document.getElementById("popup").style.display = "block";
+                        alert('Email sent successfully');
                     }, (error) => {
                         console.log('FAILED...', error);
                     });        
