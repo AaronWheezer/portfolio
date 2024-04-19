@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     Array.from(document.getElementsByClassName("nav-link")).forEach(link => {
         link.addEventListener('click', function (event) {
             checkNavBarSelected(link);
@@ -14,14 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Populate HTML with blog posts
         const blogPostsContainer = document.getElementById('blogPostsContainer');
         blogPostsContainer.innerHTML = '';
-        console.log(data.data);
         data.data.forEach(post => {
     
             const firstParagraphText = post.attributes.body[0].children[0].text;
             const postHtml = `
-                <div class="p-4 md:w-1/3 fade-in grid-item">
+                <div class="p-4 md:w-1/3 grid-item zoom-in  ">
                     <div class="h-full rounded-xl bg-white overflow-hidden flex flex-col">
-                        <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="https://strapi-5ded9797b1d3.herokuapp.com${post.attributes.cover.data.attributes.url}" alt="${post.attributes.title}">
+                        <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="./assets/img/${post.attributes.title}.jpg" alt="${post.attributes.title}">
                         <div class="p-6 flex flex-col" style="height: 300px;"> <!-- Set a fixed height for the post content -->
                             <h1 class="title-font text-lg font-medium text-gray-600 mb-3">${post.attributes.title}</h1>
                             <p class="leading-relaxed mb-3 " style="overflow: hidden;">${firstParagraphText}</p>
@@ -68,8 +68,9 @@ function handleIntersection(entries, observer) {
         if (entry.isIntersecting) {
             if (entry.target.classList.contains('grid-right')) {
                 entry.target.classList.add('slide-in-right');
-            }else if (entry.target.classList.contains('fade-in')) {
-                entry.target.classList.add('fade-in');
+            }else if (entry.target.classList.contains('zoom-in')) {
+                setTimeout
+                entry.target.classList.add('zoom-in');
             }
             else {
                 entry.target.classList.add('slide-in-left');

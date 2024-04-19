@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const postHtml = `
                 <div class="p-4 md:w-1/3 fade-in grid-item">
                     <div class="h-full rounded-xl bg-white overflow-hidden flex flex-col">
-                        <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="https://strapi-5ded9797b1d3.herokuapp.com${post.attributes.cover.data.attributes.url}" alt="${post.attributes.title}">
+                        <img class="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="./assets/img/${post.attributes.title}.jpg" alt="${post.attributes.title}">
                         <div class="p-6 flex flex-col" style="height: 300px;"> <!-- Set a fixed height for the post content -->
                             <h1 class="title-font text-lg font-medium text-gray-600 mb-3">${post.attributes.title}</h1>
                             <p class="leading-relaxed mb-3 " style="overflow: hidden;">${firstParagraphText}</p>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update HTML elements with blog post data
         blogPostTitle.textContent = blogPost.attributes.title;
         blogPostDate.textContent = `Published on ${blogPost.attributes.date}`;
-        blogPostImage.src = `https://strapi-5ded9797b1d3.herokuapp.com${blogPost.attributes.cover.data.attributes.url}`;
+        blogPostImage.src = `./assets/img/${blogPost.attributes.title}.jpg`;
 
         // Render the body content paragraphs of the blog post
         blogPostContent.innerHTML = renderBody(blogPost.attributes.body);
