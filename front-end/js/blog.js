@@ -59,17 +59,49 @@ document.addEventListener('DOMContentLoaded', function () {
         blogPostTitle.textContent = blogPost.attributes.title;
         blogPostDate.textContent = `Published on ${blogPost.attributes.date}`;
         blogPostImage.src = `./assets/img/${blogPost.attributes.title}.jpg`;
-
+        console.log(blogPost.attributes.body);
         // Render the body content paragraphs of the blog post
-        blogPostContent.innerHTML = renderBody(blogPost.attributes.body);
+        const contentBlocks = blogPost.attributes.body
+
+        contentBlocks.forEach(block => {
+            let element;
+
+            // Handle different block types
+            switch (block.type) {
+                case 'paragraph':
+                    if (block.children[0].text.trim() === "") {
+                        element = document.createElement('br');
+                    } else {
+                        element = document.createElement('p');
+                        element.textContent = block.children[0].text;
+                        if (block.children[0].bold) {
+                            element.style.fontWeight = 'bold';
+                        }
+                        break;
+                    }
+                    break;
+                case 'title':
+                case 'heading':
+                    element = document.createElement('h2');
+                    element.textContent = block.children[0].text;
+                    if (block.children[0].bold) {
+                        element.style.fontWeight = 'bold';
+                    }
+                    break;
+                // Add more cases for other types as needed
+                default:
+                    console.warn(`Unknown block type: ${block.type}`);
+                    return;
+            }
+
+            // Append the element to the content container
+            blogPostContent.appendChild(element);
+        });
     })
     .catch(error => console.error('Error fetching blog post:', error));
 });
 
-// Function to render the body content of the blog post
-function renderBody(body) {
-    return body.map(paragraph => `<p>${paragraph.children[0].text}</p>`).join('');
-}
+
 
 // Function to redirect to blog.html with post ID in the URL
 function redirectToBlog(postId) {
