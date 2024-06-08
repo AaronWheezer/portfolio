@@ -1611,6 +1611,18 @@ html {
     transform: translateX(0);
   }
 }
+.hover:animate-bounce {
+  animation: bounce 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust bounce height as needed */
+  }
+}
 
 .slide-in-right {
   animation: slideInFromRight 0.5s ease forwards;
