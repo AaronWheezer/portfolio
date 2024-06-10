@@ -2037,3 +2037,8 @@ html {
     --tw-ring-color: rgb(31 41 55 / 0.7);
   }
 }
+
+h2{
+  font-size: 1.5em;
+  font-weight: bold;
+}
